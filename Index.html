@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Feliz 21 de septiembre ✦</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;color:white;font-family:Georgia,serif}
+body{position:relative}
+#intro{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 42%,#1a2947 0%,#0a1020 35%,#03050b 68%,#000 100%);transition:opacity 1.7s ease,visibility 1.7s ease}
+#intro.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.intro-stars{position:absolute;inset:0}
+.intro-stars span{position:absolute;width:2px;height:2px;border-radius:50%;background:white;box-shadow:0 0 9px white;animation:introTwinkle 2s infinite ease-in-out}
+@keyframes introTwinkle{0%,100%{opacity:.15;transform:scale(.5)}50%{opacity:1;transform:scale(1.6)}}
+.intro-content{position:relative;z-index:2;text-align:center;animation:introFloat 4s ease-in-out infinite}
+@keyframes introFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.flower-intro{width:150px;height:210px;margin:auto;position:relative}
+.intro-stem{position:absolute;width:5px;height:105px;left:72px;top:90px;border-radius:10px;background:linear-gradient(#64a95d,#173b25)}
+.intro-leaf{position:absolute;width:65px;height:25px;left:35px;top:135px;border-radius:100% 0 100% 0;transform:rotate(-22deg);background:linear-gradient(135deg,#64ae69,#1c512d)}
+.intro-flower{position:absolute;width:90px;height:100px;left:30px;top:15px}
+.intro-flower span{position:absolute;width:43px;height:65px;bottom:0;border-radius:50% 50% 45% 45%;background:linear-gradient(180deg,#ffe17b,#f0a500);box-shadow:0 0 20px rgba(255,210,80,.5)}
+.intro-flower span:nth-child(1){left:24px}.intro-flower span:nth-child(2){left:2px;transform:rotate(-28deg)}.intro-flower span:nth-child(3){left:46px;transform:rotate(28deg)}.intro-flower span:nth-child(4){left:18px;top:3px;transform:rotate(-12deg)}.intro-flower span:nth-child(5){left:32px;top:3px;transform:rotate(12deg)}
+.intro-content h1{font-size:clamp(28px,7vw,55px);letter-spacing:3px;text-shadow:0 0 25px rgba(255,255,255,.5)}
+.intro-content p{margin:12px auto 0;opacity:.78;letter-spacing:1px;font-style:italic;font-size:clamp(13px,3.5vw,17px);max-width:390px;line-height:1.5}
+#letter{position:fixed;inset:0;z-index:25;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle,rgba(20,30,55,.45),rgba(0,0,0,.86));opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s ease}
+#letter.show{opacity:1;visibility:visible}
+.paper{position:relative;width:min(90%,530px);padding:52px 32px 42px;text-align:center;overflow:hidden;color:#252525;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.99),rgba(244,241,232,.98));box-shadow:0 30px 100px rgba(0,0,0,.9),0 0 55px rgba(255,220,130,.12);border:1px solid rgba(255,255,255,.75);transform:translateY(25px) scale(.92);animation:paperIn 1.5s ease forwards}
+@keyframes paperIn{to{transform:translateY(0) scale(1)}}
+.paper:before{content:"";position:absolute;inset:-100px;background:radial-gradient(circle,rgba(255,255,255,.75),transparent 55%);opacity:.5;pointer-events:none}
+.paper:after{content:"✦  ✧  ✦  ✧  ✦";position:absolute;top:17px;left:0;right:0;font-size:14px;letter-spacing:7px;color:#a78b56;opacity:.7}
+.paper h2{position:relative;font-size:31px;margin-bottom:25px;color:#242424;letter-spacing:1px}
+.paper h2:after{content:"";display:block;width:70px;height:1px;margin:12px auto 0;background:#a78b56}
+.paper p{position:relative;font-size:18px;line-height:1.9}
+.paper .main-text{font-size:18px}
+.paper .signature{margin-top:25px;font-style:italic;color:#655d51}
+.friend-star{position:relative;display:block;margin:18px auto 3px;font-size:22px;color:#b28b48;animation:paperSparkle 2.5s infinite ease-in-out}
+@keyframes paperSparkle{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
+.enter{position:relative;margin-top:30px;padding:13px 29px;border:1px solid #333;background:linear-gradient(135deg,#171717,#303030);color:white;border-radius:30px;font-size:12px;letter-spacing:2px;cursor:pointer;box-shadow:0 7px 20px rgba(0,0,0,.2);transition:transform .3s ease,box-shadow .3s ease}
+.enter:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,255,255,.25)}
+.enter:active{transform:scale(.97)}
+#canvas{position:fixed;inset:0;width:100%;height:100%;display:block;background:#000}
+#galaxyUI{position:fixed;top:20px;left:0;right:0;z-index:8;text-align:center;pointer-events:none;opacity:0;transition:opacity 2s ease}
+#galaxyUI.show{opacity:1}
+#galaxyUI h3{font-size:clamp(15px,4vw,24px);letter-spacing:5px;font-weight:normal;text-shadow:0 0 18px rgba(255,255,255,.75)}
+#galaxyUI p{margin-top:8px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:2px;opacity:.5}
+#musicButton{position:fixed;right:18px;bottom:18px;z-index:12;width:44px;height:44px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.38);color:white;cursor:pointer;font-size:16px;backdrop-filter:blur(7px);transition:.3s}
+#musicButton:hover{transform:scale(1.08);box-shadow:0 0 18px rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+<section id="intro">
+<div class="intro-stars" id="introStars"></div>
+<div class="intro-content">
+<div class="flower-intro">
+<div class="intro-flower"><span></span><span></span><span></span><span></span><span></span></div>
+<div class="intro-stem"></div><div class="intro-leaf"></div>
+</div>
+<h1>21 de septiembre ✦</h1>
+<p>un pequeño universo para ti y por supuesto tus flores amarillas</p>
+</div>
+</section>
+
+<section id="letter">
+<div class="paper">
+<h2>Para ti ✦</h2>
+<span class="friend-star">✧</span>
+<p class="main-text">
+Te quiero mucho.<br>
+Eres muy buen amigo y adoro tu personalidad.<br>
+Mi Minho biased favorito ♡
+</p>
+<p class="signature">
+Gracias por existir y por todos los momentos bonitos.<br>
+Que nunca te falten motivos para sonreír.<br>
+— con cariño ✦
+</p>
+<button class="enter" id="enter">ENTRAR A LA GALAXIA</button>
+</div>
+</section>
+
+<canvas id="canvas"></canvas>
+<div id="galaxyUI"><h3>UN UNIVERSO PARA TI ✦</h3><p>arrastra · gira · acerca</p></div>
+
+<audio id="music" loop preload="auto"><source src="0801.mp3" type="audio/mpeg"></audio>
+<button id="musicButton" title="Música">♫</button>
+
+<script>
+const introStars=document.getElementById("introStars");
+for(let i=0;i<110;i++){const star=document.createElement("span");star.style.left=Math.random()*100+"%";star.style.top=Math.random()*100+"%";star.style.animationDelay=Math.random()*2+"s";star.style.animationDuration=1.2+Math.random()*2.5+"s";introStars.appendChild(star)}
+
+const intro=document.getElementById("intro"),letter=document.getElementById("letter"),enter=document.getElementById("enter"),galaxyUI=document.getElementById("galaxyUI"),canvas=document.getElementById("canvas"),ctx=canvas.getContext("2d"),music=document.getElementById("music"),musicButton=document.getElementById("musicButton");
+
+let W=0,H=0,DPR=1,rotationX=-.12,rotationY=0,velocityY=.000035,zoom=1,dragging=false,lastX=0,lastY=0,touchDistance=0;
+const isMobile=window.innerWidth<700,STAR_COUNT=isMobile?2800:6500,DUST_COUNT=isMobile?650:1500,FLOWER_COUNT=isMobile?220:360;
+let centerMode=0,stars=[],dust=[],flowers=[],phrases=[];
+const centerColors=["#ff8fa8","#ffd45c","#ffffff","#8fd8ff","#c6a7ff"];
+
+function resize(){DPR=Math.min(window.devicePixelRatio||1,2);W=window.innerWidth;H=window.innerHeight;canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+"px";canvas.style.height=H+"px";ctx.setTransform(DPR,0,0,DPR,0,0)}
+window.addEventListener("resize",resize);resize();
+
+function randomGaussian(){let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(Math.PI*2*v)}
+function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+const ARMS=5;
+function createGalaxyPosition(){const radius=.035+Math.pow(Math.random(),.62)*1.35,arm=Math.floor(Math.random()*ARMS),spiralCurve=radius*5.8,spread=randomGaussian()*(.10+radius*.08),angle=arm*Math.PI*2/ARMS+spiralCurve+spread;return{radius,angle}}
+
+for(let i=0;i<STAR_COUNT;i++){const p=createGalaxyPosition();stars.push({radius:p.radius,angle:p.angle,z:randomGaussian()*.65,size:Math.random()<.93?.35+Math.random()*1.5:1.6+Math.random()*2.5,brightness:.25+Math.random()*.75,speed:.000008+Math.random()*.000028,phase:Math.random()*Math.PI*2,color:Math.random()<.82?"#ffffff":"#ffe8a0"})}
+for(let i=0;i<DUST_COUNT;i++){const p=createGalaxyPosition();dust.push({radius:p.radius+randomGaussian()*.035,angle:p.angle+randomGaussian()*.05,z:randomGaussian()*.8,size:.15+Math.random()*.8,alpha:.035+Math.random()*.16,speed:.000004+Math.random()*.000016})}
+for(let i=0;i<FLOWER_COUNT;i++){const a=stars[Math.floor(Math.random()*stars.length)];flowers.push({radius:clamp(a.radius+randomGaussian()*.025,.05,1.42),angle:a.angle+randomGaussian()*.045,z:a.z+randomGaussian()*.06,size:Math.random()<.25?2+Math.random()*2.5:3+Math.random()*5.5,type:Math.random()<.5?"tulip":"sunflower",phase:Math.random()*Math.PI*2,sway:.25+Math.random()*.75,brightness:.55+Math.random()*.45,sparkles:Math.floor(2+Math.random()*5)})}
+
+const phraseTexts=["qué bonito tenerte como amigo","gracias por estar","tu amistad vale mucho","siempre puedes contar conmigo","me alegra haberte conocido","eres una persona especial","gracias por tantas risas","nunca cambies esa bonita forma de ser","qué suerte coincidir contigo","tu amistad hace todo más bonito","por muchos momentos más","eres de esas personas que se quedan","gracias por ser tú","un pequeño universo para ti","siempre habrá una estrella para ti","21 de septiembre ✦","para mi amigo favorito","que nunca te falten motivos para sonreír","gracias por formar parte de mi vida","tu amistad es un regalo","me alegra tenerte cerca","por todas nuestras aventuras","eres una estrella entre millones","que vengan muchos recuerdos más","gracias por cada risa","qué bonito compartir momentos contigo"];
+for(let i=0;i<38;i++){const p=createGalaxyPosition();phrases.push({text:phraseTexts[Math.floor(Math.random()*phraseTexts.length)],radius:p.radius,angle:p.angle,z:randomGaussian()*.55,size:7+Math.random()*4,alpha:.24+Math.random()*.28,speed:.000005+Math.random()*.000018})}
+
+function project(radius,angle,zOffset){const cosX=Math.cos(rotationX),sinX=Math.sin(rotationX),cosY=Math.cos(rotationY),sinY=Math.sin(rotationY),cx=W/2,cy=H/2,scale=Math.min(W,H)*.40*zoom,worldX=radius*Math.cos(angle),worldY=zOffset*.55,worldZ=radius*Math.sin(angle),x1=worldX*cosY+worldZ*sinY,z1=-worldX*sinY+worldZ*cosY,y2=worldY*cosX-z1*sinX,z2=worldY*sinX+z1*cosX,perspective=520/(520+z2*scale);return{x:cx+x1*scale*perspective,y:cy+y2*scale*perspective,scale:perspective,depth:z2}}
+
+function drawBackground(){const g=ctx.createRadialGradient(W*.5,H*.47,0,W*.5,H*.5,Math.max(W,H)*.82);g.addColorStop(0,"#111a35");g.addColorStop(.18,"#080f25");g.addColorStop(.42,"#030713");g.addColorStop(.72,"#010208");g.addColorStop(1,"#000");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+function drawNebula(){let g=ctx.createRadialGradient(W*.42,H*.45,0,W*.42,H*.45,Math.min(W,H)*.65);g.addColorStop(0,"rgba(92,125,210,.13)");g.addColorStop(.3,"rgba(55,75,170,.07)");g.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);g=ctx.createRadialGradient(W*.65,H*.55,0,W*.65,H*.55,Math.min(W,H)*.5);g.addColorStop(0,"rgba(120,85,180,.07)");g.addColorStop(.5,"rgba(60,45,130,.025)");g.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+
+function drawStar(x,y,size,alpha,phase,color="#fff"){const pulse=.78+Math.sin(performance.now()*.0018+phase)*.22,s=size*pulse;ctx.globalAlpha=clamp(alpha,0,1);ctx.fillStyle=color;if(s>1.7){ctx.beginPath();ctx.moveTo(x,y-s*2.5);ctx.lineTo(x+s*.55,y-s*.55);ctx.lineTo(x+s*2.5,y);ctx.lineTo(x+s*.55,y+s*.55);ctx.lineTo(x,y+s*2.5);ctx.lineTo(x-s*.55,y+s*.55);ctx.lineTo(x-s*2.5,y);ctx.lineTo(x-s*.55,y-s*.55);ctx.closePath();ctx.fill()}else{ctx.beginPath();ctx.arc(x,y,Math.max(.3,s),0,Math.PI*2);ctx.fill()}}
+
+function drawTulip(x,y,size,alpha,phase){const t=performance.now()*.001,sway=Math.sin(t*.35+phase)*size*.12;ctx.save();ctx.translate(x+sway,y);ctx.globalAlpha=alpha;ctx.strokeStyle="#4d8652";ctx.lineWidth=Math.max(1,size*.42);ctx.lineCap="round";ctx.beginPath();ctx.moveTo(0,size*.9);ctx.quadraticCurveTo(-size*.15,size*.3,0,-size*.05);ctx.stroke();ctx.fillStyle="#376d3e";ctx.beginPath();ctx.ellipse(-size*.55,size*.45,size*.8,size*.25,-.45,0,Math.PI*2);ctx.fill();ctx.fillStyle="#f5ca55";function petal(px,py,rx,ry,rot){ctx.save();ctx.translate(px,py);ctx.rotate(rot);ctx.beginPath();ctx.ellipse(0,0,rx,ry,0,0,Math.PI*2);ctx.fill();ctx.restore()}petal(0,-size*.3,size*.42,size*.7,0);petal(-size*.32,-.15*size,size*.4,size*.62,-.42);petal(size*.32,-.15*size,size*.4,size*.62,.42);petal(-size*.12,-size*.55,size*.36,size*.58,-.18);petal(size*.12,-size*.55,size*.36,size*.58,.18);ctx.restore()}
+function drawSunflower(x,y,size,alpha,phase){const t=performance.now()*.001,sway=Math.sin(t*.32+phase)*size*.1;ctx.save();ctx.translate(x+sway,y);ctx.globalAlpha=alpha;ctx.strokeStyle="#3f7746";ctx.lineWidth=Math.max(1,size*.4);ctx.beginPath();ctx.moveTo(0,size);ctx.lineTo(0,-size*.05);ctx.stroke();ctx.fillStyle="#376c3d";ctx.beginPath();ctx.ellipse(-size*.55,size*.45,size*.7,size*.22,-.5,0,Math.PI*2);ctx.fill();ctx.fillStyle="#f6c844";for(let i=0;i<15;i++){const a=i*Math.PI*2/15;ctx.save();ctx.rotate(a);ctx.beginPath();ctx.ellipse(0,-size*.43,size*.17,size*.43,0,0,Math.PI*2);ctx.fill();ctx.restore()}ctx.fillStyle="#593718";ctx.beginPath();ctx.arc(0,0,size*.28,0,Math.PI*2);ctx.fill();ctx.fillStyle="#b87827";ctx.beginPath();ctx.arc(0,0,size*.12,0,Math.PI*2);ctx.fill();ctx.restore()}
+function drawFlowerSparkles(f,p){for(let i=0;i<f.sparkles;i++){const a=f.phase+i*Math.PI*2/f.sparkles+performance.now()*.00006,d=f.size*(1.8+i*.5);drawStar(p.x+Math.cos(a)*d,p.y+Math.sin(a)*d,Math.max(.3,f.size*.1),.55,f.phase+i,"#fff8d6")}}
+
+function drawCenter(){const cx=W/2,cy=H/2,radius=Math.min(W,H)*.075,color=centerColors[centerMode],now=performance.now(),count=110;for(let i=0;i<count;i++){const angle=i*Math.PI*2/count;let x,y;if(centerMode===0){const hx=16*Math.pow(Math.sin(angle),3),hy=-(13*Math.cos(angle)-5*Math.cos(2*angle)-2*Math.cos(3*angle)-Math.cos(4*angle));x=cx+hx*radius/16;y=cy+hy*radius/16}else if(centerMode===1){const r=radius*(.55+.35*Math.cos(angle*5));x=cx+Math.cos(angle)*r;y=cy+Math.sin(angle)*r}else if(centerMode===2){const r=radius*(.45+.42*Math.abs(Math.cos(angle*2.5)));x=cx+Math.cos(angle)*r;y=cy+Math.sin(angle)*r}else if(centerMode===3){const r=radius*.78;x=cx+Math.cos(angle)*r;y=cy+Math.sin(angle)*r}else{const r=radius*(.08+.9*(i/count));x=cx+Math.cos(angle*3)*r;y=cy+Math.sin(angle*3)*r}x+=Math.sin(now*.001+i)*1.5;y+=Math.cos(now*.0012+i)*1.5;const colors=[color,"#ffffff","#ffe6a0"];drawStar(x,y,1+Math.random()*1.7,.7+Math.random()*.3,i,colors[Math.floor(Math.random()*colors.length)])}}
+
+let lastTime=performance.now(),audioCtx=null,analyser=null,audioData=null,audioLevel=0,audioTarget=0;
+function initAudioAnalyzer(){if(analyser)return;try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();const source=audioCtx.createMediaElementSource(music);analyser=audioCtx.createAnalyser();analyser.fftSize=256;analyser.smoothingTimeConstant=.88;source.connect(analyser);analyser.connect(audioCtx.destination);audioData=new Uint8Array(analyser.frequencyBinCount)}catch(e){}}
+function updateMusicMotion(){if(!analyser||music.paused)return;analyser.getByteFrequencyData(audioData);let sum=0;for(let i=0;i<audioData.length;i++)sum+=audioData[i];audioTarget=(sum/audioData.length)/255;audioLevel+=(audioTarget-audioLevel)*.035}
+
+function animate(now){const dt=Math.min(32,now-lastTime);lastTime=now;updateMusicMotion();drawBackground();drawNebula();
+const musical=audioLevel;
+rotationY+=velocityY*dt*(1+musical*.18);
+if(!dragging)rotationX=Math.sin(now*.000035)*.13+Math.sin(now*.0009)*musical*.012;
+velocityY*=.997;if(!dragging)velocityY+=.000000018*dt;
+const glow=1+musical*.8;
+for(const d of dust){d.angle+=d.speed*dt;const p=project(d.radius,d.angle,d.z);if(p.x<-30||p.x>W+30||p.y<-30||p.y>H+30)continue;ctx.globalAlpha=d.alpha*clamp(p.scale,.15,1.3);ctx.fillStyle="#9ca9d4";ctx.beginPath();ctx.arc(p.x,p.y,Math.max(.2,d.size*p.scale*(1+musical*.25)),0,Math.PI*2);ctx.fill()}
+for(const s of stars){s.angle+=s.speed*dt;const p=project(s.radius,s.angle,s.z+Math.sin(now*.00012+s.phase)*(.025+musical*.012));if(p.x<-40||p.x>W+40||p.y<-40||p.y>H+40)continue;drawStar(p.x,p.y,s.size*p.scale*glow,s.brightness*clamp(p.scale,.15,1.4),s.phase,s.color)}
+for(const f of phrases){f.angle+=f.speed*dt;const p=project(f.radius,f.angle,f.z);ctx.globalAlpha=f.alpha*clamp(p.scale,.2,1.3);ctx.fillStyle="#f1e9d8";ctx.font=`italic ${f.size*p.scale}px Georgia`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(f.text,p.x,p.y)}
+for(const flower of flowers){flower.angle+=.000007*flower.sway*dt;const p=project(flower.radius,flower.angle,flower.z+Math.sin(now*.00045+flower.phase)*.018);if(p.x<-50||p.x>W+50||p.y<-50||p.y>H+50)continue;const depth=clamp(p.scale,.3,1.4),alpha=flower.brightness*(.55+.45*depth);drawFlowerSparkles(flower,p);if(flower.type==="tulip")drawTulip(p.x,p.y,flower.size*depth*(1+musical*.06),alpha,flower.phase);else drawSunflower(p.x,p.y,flower.size*depth*(1+musical*.06),alpha,flower.phase)}
+drawCenter();ctx.globalAlpha=1;requestAnimationFrame(animate)}
+requestAnimationFrame(animate);
+
+setInterval(()=>{centerMode=(centerMode+1)%5},5000);
+setTimeout(()=>intro.classList.add("hidden"),4300);
+setTimeout(()=>letter.classList.add("show"),900);
+
+enter.addEventListener("click",async()=>{letter.classList.remove("show");galaxyUI.classList.add("show");initAudioAnalyzer();try{if(audioCtx&&audioCtx.state==="suspended")await audioCtx.resume();music.volume=.65;await music.play();musicButton.textContent="♫"}catch(e){musicButton.textContent="▶"}});
+musicButton.addEventListener("click",async()=>{initAudioAnalyzer();if(music.paused){try{if(audioCtx&&audioCtx.state==="suspended")await audioCtx.resume();await music.play();musicButton.textContent="♫"}catch(e){}}else{music.pause();musicButton.textContent="▶"}});
+
+canvas.addEventListener("mousedown",e=>{dragging=true;lastX=e.clientX;lastY=e.clientY});
+window.addEventListener("mouseup",()=>dragging=false);
+canvas.addEventListener("mousemove",e=>{if(!dragging)return;const dx=e.clientX-lastX,dy=e.clientY-lastY;rotationY+=dx*.004;rotationX+=dy*.003;velocityY=dx*.0001;lastX=e.clientX;lastY=e.clientY});
+canvas.addEventListener("wheel",e=>{e.preventDefault();zoom=clamp(zoom+(e.deltaY>0?-.08:.08),.45,3.2)},{passive:false});
+canvas.addEventListener("touchstart",e=>{if(e.touches.length===1){dragging=true;lastX=e.touches[0].clientX;lastY=e.touches[0].clientY}if(e.touches.length===2){dragging=false;touchDistance=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY)}},{passive:false});
+canvas.addEventListener("touchmove",e=>{e.preventDefault();if(e.touches.length===1&&dragging){const dx=e.touches[0].clientX-lastX,dy=e.touches[0].clientY-lastY;rotationY+=dx*.005;rotationX+=dy*.004;velocityY=dx*.0001;lastX=e.touches[0].clientX;lastY=e.touches[0].clientY}if(e.touches.length===2){const nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(touchDistance>0)zoom=clamp(zoom+(nd-touchDistance)*.002,.45,3.2);touchDistance=nd}},{passive:false});
+canvas.addEventListener("touchend",()=>{dragging=false;touchDistance=0});
+</script>
+</body>
+</html>
